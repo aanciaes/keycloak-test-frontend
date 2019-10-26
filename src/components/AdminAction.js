@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export default class AdminWPathParams extends React.Component {
+export default class AdminAction extends React.Component {
   state = {
     response: null
   };

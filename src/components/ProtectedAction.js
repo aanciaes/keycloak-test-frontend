@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 
 
-export default class AdminFunc extends React.Component {
+export default class ProtectedAction extends React.Component {
   state = {
     response: null
   };
@@ -15,7 +15,7 @@ export default class AdminFunc extends React.Component {
     }
   };
 
-  adminFunc = () => {
+  protectedFunc = () => {
     axios.get('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/protected', {
       headers: {
         "Authorization" : "Bearer " + this.props.token
@@ -31,7 +31,7 @@ export default class AdminFunc extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.adminFunc}>Protected Operation</button>
+        <button onClick={this.protectedFunc}>Protected Operation</button>
         <p><b>GET /protected</b></p>
         {this.renderMessage()}
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
-import AdminFunc from "./admin";
+import ProtectedAction from "./ProtectedAction";
 import PublicAction from "./PublicAction";
-import AdminWPathParams from "./adminWPathParams";
+import AdminAction from "./AdminAction";
 import {connect} from "react-redux";
 
 class KeycloakTester extends React.Component {
@@ -23,9 +23,9 @@ class KeycloakTester extends React.Component {
                 <br/>
                 <PublicAction token={kc.token}/>
                 <br/>
-                <AdminFunc token={kc.token}/>
+                <ProtectedAction token={kc.token}/>
                 <br/>
-                <AdminWPathParams token={kc.token}/>
+                <AdminAction token={kc.token}/>
             </div>
         );
     }
