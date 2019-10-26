@@ -15,15 +15,16 @@ export default class AdminAction extends React.Component {
   };
 
   setResponse = (r) => {
-    this.setResponse({response: r})
+    this.setState({response: r});
+    setTimeout(() => this.setState({response: null}), 5000);
   };
 
   adminFunc = () => {
     axios.get('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/protectedWithRole')
       .then((res) => {
-        this.setState({response: res.statusText})
+        this.setResponse(res.statusText)
       }).catch((err) => {
-      this.setState({response: err.toString()})
+        this.setResponse(err.toString())
     })
   };
 
@@ -32,7 +33,7 @@ export default class AdminAction extends React.Component {
 
       <div>
         <button onClick={this.adminFunc}>Role Based Protected Resource</button>
-        <p><b>POST /protectedWithRole</b></p>
+        <p><b>GET /protectedWithRole</b></p>
         {this.renderMessage()}
       </div>
     )

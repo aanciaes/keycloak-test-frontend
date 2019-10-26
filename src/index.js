@@ -34,28 +34,21 @@ const app = (
 );
 
 const kc = new Keycloak('/keycloak.json');
-kc.init({onLoad: "login-required"})
-    .success(() => {
-        store.getState().keycloak = kc;
-        ReactDOM.render(app, document.getElementById("app"));
-    })
-    .error(() => {
+kc.init({onLoad: "login-required", promiseType: 'native'})
+    .then((authenticated) => {
+        if (authenticated) {
+            store.getState().keycloak = kc;
+            ReactDOM.render(app, document.getElementById("app"));
+        }
+    }).catch(() => {
         kc.logout()
-    });
+    }
+);
 
-/*.then(authenticated => {
-  if (authenticated) {
-    store.getState().keycloak = kc;
-    ReactDOM.render(app, document.getElementById("app"));
-  }
-}).catch(() => {
-  kc.logout()
-});*/
-
-axios.interceptors.request.use(config => (
+axios.interceptors.request.use((config) => (
     kc.updateToken(5)
         .then((refreshed) => {
-            if (refreshed) {
+            if (refreshed){
                 // This is just to force the component to refresh so we can see the tokens on screen, no need for it in production
                 store.dispatch({
                     type: "REFRESH",

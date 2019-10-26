@@ -15,6 +15,11 @@ export default class ProtectedAction extends React.Component {
     }
   };
 
+  setResponse = (r) => {
+    this.setState({response: r});
+    setTimeout(() => this.setState({response: null}), 5000);
+  };
+
   protectedFunc = () => {
     axios.get('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/protected', {
       headers: {
@@ -22,9 +27,9 @@ export default class ProtectedAction extends React.Component {
       }
     })
       .then((res) => {
-        this.setState({response: res.statusText})
+        this.setResponse(res.statusText);
       }).catch((err) => {
-      this.setState({response: err.toString()})
+        this.setResponse(err.toString());
     })
   };
 
