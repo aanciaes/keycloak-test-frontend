@@ -20,7 +20,7 @@ export default class AdminAction extends React.Component {
   };
 
   adminFunc = () => {
-    axios.get('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/protectedWithRole')
+    axios.get('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/admin')
       .then((res) => {
         this.setResponse(res.statusText)
       }).catch((err) => {

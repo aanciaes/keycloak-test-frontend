@@ -3,6 +3,7 @@ import ProtectedAction from "./ProtectedAction";
 import PublicAction from "./PublicAction";
 import AdminAction from "./AdminAction";
 import {connect} from "react-redux";
+import {AdminOptions} from "./AdminOptions";
 
 class KeycloakTester extends React.Component {
     render() {
@@ -26,6 +27,11 @@ class KeycloakTester extends React.Component {
                 <ProtectedAction token={kc.token}/>
                 <br/>
                 <AdminAction token={kc.token}/>
+
+                <div>
+                    <h2>Administrator Options</h2>
+                    <AdminOptions/>
+                </div>
             </div>
         );
     }
