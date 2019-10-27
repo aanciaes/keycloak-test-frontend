@@ -17,7 +17,7 @@ export class AdminOptions extends React.Component {
     };
 
     createNewUser = () => {
-        axios.post('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/user', {
+        axios.post('http://ec2-13-58-116-147.us-east-2.compute.amazonaws.com:3000/user', {
             headers: {
                 "Content-Type": "application/json"
             },

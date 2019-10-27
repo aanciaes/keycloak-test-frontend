@@ -21,7 +21,7 @@ export default class ProtectedAction extends React.Component {
   };
 
   protectedFunc = () => {
-    axios.get('http://ec2-54-175-112-125.compute-1.amazonaws.com:3000/protected', {
+    axios.get('http://ec2-13-58-116-147.us-east-2.compute.amazonaws.com:3000/protected', {
       headers: {
         "Authorization" : "Bearer " + this.props.token
       }
